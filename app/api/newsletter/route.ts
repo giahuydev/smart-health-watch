@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
     if (!result.success) {
       return NextResponse.json(
-        { error: "Dữ liệu không hợp lệ", details: result.error.errors },
+        { error: "Dữ liệu không hợp lệ", details: result.error.issues },
         { status: 400 }
       );
     }
