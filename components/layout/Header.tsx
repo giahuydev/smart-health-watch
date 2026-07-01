@@ -3,8 +3,19 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { List, X, Moon, Sun } from "@phosphor-icons/react/dist/ssr";
+import { List, X, Moon, Sun, ShoppingCart } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/Button";
+import { useAppStore } from "@/lib/store";
+
+function CartBadge() {
+  const cart = useAppStore((state) => state.cart);
+  if (cart.length === 0) return null;
+  return (
+    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+      {cart.length}
+    </span>
+  );
+}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,13 +42,19 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-16 md:h-20 ${
         isScrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-slate-200 dark:border-gray-800"
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-slate-200 dark:border-gray-800 shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-        <Link href="/" className="font-heading font-bold text-2xl tracking-tight">
-          VitaWatch
+        <Link
+          href="/"
+          className="font-heading font-bold text-2xl tracking-tight flex items-center"
+        >
+          <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent mr-1">Vita</span>
+          <span className="text-slate-900 dark:text-white transition-colors">
+            Watch
+          </span>
         </Link>
 
         {/* Desktop Nav */}
@@ -46,7 +63,7 @@ export function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors"
+              className="text-sm font-medium transition-colors text-slate-600 hover:text-emerald-500 dark:text-gray-300 dark:hover:text-white"
             >
               {link.name}
             </Link>
@@ -57,19 +74,29 @@ export function Header() {
         <div className="hidden md:flex items-center gap-4">
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors text-slate-600 dark:text-gray-300"
+            className="p-2 rounded-full transition-colors hover:bg-slate-100 dark:hover:bg-gray-800 text-slate-600 dark:text-gray-300"
             aria-label="Toggle theme"
           >
             {mounted && (theme === "dark" ? <Sun size={20} /> : <Moon size={20} />)}
           </button>
-          <Button variant="primary" size="sm">
+
+          <button
+            onClick={() => useAppStore.getState().toggleCart()}
+            className="p-2 rounded-full transition-colors relative hover:bg-slate-100 dark:hover:bg-gray-800 text-slate-600 dark:text-gray-300"
+            aria-label="View cart"
+          >
+            <ShoppingCart size={20} />
+            <CartBadge />
+          </button>
+
+          <Button variant="primary" size="sm" onClick={() => document.getElementById("order")?.scrollIntoView({ behavior: "smooth" })}>
             Đặt trước ngay
           </Button>
         </div>
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2 text-slate-600 dark:text-gray-300"
+          className="md:hidden p-2 transition-colors text-slate-600 dark:text-gray-300"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={24} /> : <List size={24} />}

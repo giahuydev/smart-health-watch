@@ -42,7 +42,7 @@ const specs = [
 
 export function SpecsSection() {
   return (
-    <section id="specs" className="py-20 lg:py-28 bg-midnight text-white">
+    <section id="specs" className="py-20 lg:py-28 text-slate-900 dark:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2 
@@ -59,13 +59,13 @@ export function SpecsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-gray-400"
+            className="text-lg text-slate-600 dark:text-gray-400"
           >
             So sánh chi tiết hai phiên bản để tìm ra chiếc VitaWatch phù hợp nhất với bạn.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {specs.map((spec, idx) => (
             <motion.div
               key={spec.name}
@@ -73,35 +73,37 @@ export function SpecsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`relative bg-gray-900 rounded-3xl p-8 border ${
-                spec.color === "amber" ? "border-amber-500/30 shadow-[0_0_40px_-15px_rgba(245,158,11,0.2)]" : "border-gray-800"
+              className={`relative overflow-hidden rounded-[2rem] p-8 lg:p-10 border transition-transform duration-300 hover:-translate-y-1 ${
+                spec.color === "amber" 
+                  ? "bg-gradient-to-b from-amber-50/50 to-white dark:from-amber-900/20 dark:to-gray-900 border-amber-200 dark:border-amber-500/30 shadow-2xl shadow-amber-500/10" 
+                  : "bg-white dark:bg-gray-800/40 border-slate-200 dark:border-gray-700 shadow-xl"
               }`}
             >
               {spec.color === "amber" && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white text-xs font-bold uppercase tracking-wider py-1 px-4 rounded-full">
+                <div className="absolute top-0 right-0 bg-gradient-to-bl from-amber-400 to-amber-600 text-white text-[10px] font-bold uppercase tracking-widest py-1.5 px-5 rounded-bl-2xl">
                   Khuyên dùng
                 </div>
               )}
               
-              <div className="mb-8 text-center pb-8 border-b border-gray-800">
-                <h3 className="text-2xl font-heading font-bold mb-2">{spec.name}</h3>
-                <p className="text-gray-400 text-sm mb-6 min-h-[40px]">{spec.description}</p>
-                <div className="text-4xl font-bold text-white mb-2">
+              <div className="mb-10 pb-8 border-b border-slate-200/60 dark:border-gray-700/60 flex flex-col items-start text-left">
+                <h3 className="text-3xl font-heading font-bold mb-3 text-slate-900 dark:text-white">{spec.name}</h3>
+                <p className="text-slate-600 dark:text-gray-400 text-base leading-relaxed mb-6 min-h-[48px]">{spec.description}</p>
+                <div className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
                   {spec.price}
                 </div>
               </div>
               
-              <ul className="space-y-4">
+              <ul className="space-y-5">
                 {spec.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <li key={i} className="flex items-start gap-4">
                     <Check 
-                      size={20} 
-                      className={`shrink-0 mt-0.5 ${feature.highlight ? "text-amber-400" : "text-emerald-500"}`} 
+                      size={22} 
+                      className={`shrink-0 mt-0.5 ${feature.highlight ? "text-amber-500" : "text-emerald-500"}`} 
                       weight="bold" 
                     />
                     <div className="flex-1">
-                      <span className="text-gray-400 text-sm block mb-1">{feature.label}</span>
-                      <span className={`text-base font-medium ${feature.highlight ? "text-white" : "text-gray-200"}`}>
+                      <span className="text-slate-500 dark:text-gray-400 text-sm block mb-1 font-medium">{feature.label}</span>
+                      <span className={`text-base leading-snug ${feature.highlight ? "text-slate-900 dark:text-white font-semibold" : "text-slate-700 dark:text-gray-300 font-medium"}`}>
                         {feature.value}
                       </span>
                     </div>

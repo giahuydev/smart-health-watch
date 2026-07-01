@@ -11,41 +11,41 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-midnight text-white py-12 md:py-16 border-t border-gray-800">
+    <footer className="py-12 border-t border-slate-200 dark:border-gray-800 text-slate-600 dark:text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         <div className="flex flex-col gap-4">
-          <Link href="/" className="font-heading font-bold text-2xl tracking-tight">
+          <Link href="/" className="font-heading font-bold text-2xl tracking-tight text-slate-900 dark:text-white">
             VitaWatch
           </Link>
-          <p className="text-gray-400 text-sm max-w-xs">{TAGLINE}</p>
+          <p className="text-sm max-w-xs">{TAGLINE}</p>
         </div>
 
         <nav className="flex flex-wrap gap-6 md:gap-8">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-gray-400 hover:text-white transition-colors text-sm font-medium">
+            <Link key={link.name} href={link.href} className="hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium">
               {link.name}
             </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link href="#" className="p-2 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors" aria-label="Facebook">
+          <Link href="#" className="p-2 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-colors" aria-label="Facebook">
             <FacebookLogo size={20} weight="fill" />
           </Link>
-          <Link href="#" className="p-2 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors" aria-label="Instagram">
+          <Link href="#" className="p-2 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-colors" aria-label="Instagram">
             <InstagramLogo size={20} weight="fill" />
           </Link>
-          <Link href="#" className="p-2 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors" aria-label="YouTube">
+          <Link href="#" className="p-2 bg-slate-100 dark:bg-gray-800 hover:bg-slate-200 dark:hover:bg-gray-700 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white rounded-full transition-colors" aria-label="YouTube">
             <YoutubeLogo size={20} weight="fill" />
           </Link>
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-slate-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 dark:text-gray-500">
         <p>© 2026 VitaWatch AI — Made for Healthy Living Corporation.</p>
         <div className="flex gap-4">
-          <Link href="#" className="hover:text-gray-300">Điều khoản</Link>
-          <Link href="#" className="hover:text-gray-300">Bảo mật</Link>
+          <Link href="#" className="hover:text-slate-800 dark:hover:text-gray-300">Điều khoản</Link>
+          <Link href="#" className="hover:text-slate-800 dark:hover:text-gray-300">Bảo mật</Link>
         </div>
       </div>
     </footer>

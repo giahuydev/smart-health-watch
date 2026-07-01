@@ -1,17 +1,16 @@
 @import "tailwindcss";
-@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-midnight: #0B0F19;
+  --color-midnight: #0F172A;
   --color-snow: #F8FAFC;
   --color-emerald: #10B981;
   --color-indigo: #6366F1;
   --color-amber: #F59E0B;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
