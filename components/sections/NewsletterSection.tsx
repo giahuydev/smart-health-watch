@@ -19,7 +19,7 @@ export function NewsletterSection() {
     resolver: zodResolver(newsletterSchema),
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: NewsletterFormValues) => {
     setIsLoading(true);
     try {
       const response = await fetch("/api/newsletter", {

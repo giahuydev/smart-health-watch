@@ -36,23 +36,25 @@ export async function POST(request: NextRequest) {
 
     // Gọi Gemini API
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          systemInstruction: {
+            parts: [{ text: SYSTEM_PROMPT }]
+          },
           contents: [
-            { role: "user", parts: [{ text: SYSTEM_PROMPT }] },
-            { role: "model", parts: [{ text: "Xin chào! Tôi là trợ lý VitaWatch AI. Bạn muốn tìm hiểu gì về sản phẩm?" }] },
-            { role: "user", parts: [{ text: message }] },
+            { role: "user", parts: [{ text: message }] }
           ],
         }),
       }
     );
 
     if (!response.ok) {
-      const reply = getStaticReply(message);
-      return NextResponse.json({ reply });
+      const errorText = await response.text();
+      console.error("Gemini API Error:", response.status, errorText);
+      return NextResponse.json({ reply: `Lỗi kết nối API (${response.status}): ${errorText.substring(0, 100)}... Bạn hãy kiểm tra lại Key nhé!` });
     }
 
     const data = await response.json();

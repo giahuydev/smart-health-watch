@@ -37,10 +37,20 @@ export function HeroSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
-              <Button variant="primary" size="lg" className="w-full sm:w-auto">
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="w-full sm:w-auto"
+                onClick={() => document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Đặt trước ngay
               </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto text-slate-700 dark:text-white">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="w-full sm:w-auto text-slate-700 dark:text-white"
+                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Khám phá tính năng
               </Button>
             </div>
@@ -70,11 +80,11 @@ export function HeroSection() {
             {/* Aura Glow Effect */}
             <div className="absolute inset-0 bg-emerald-500/30 dark:bg-teal-400/30 blur-[100px] rounded-full scale-[0.85] transform -z-10 transition-opacity duration-700" />
             
-            <div className="relative w-[320px] h-[320px] md:w-[480px] md:h-[480px] lg:w-[540px] lg:h-[540px]">
+            <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[460px] lg:h-[460px]">
               <img 
-                src="/images/hero-watch-transparent.svg" 
+                src="/images/anhchinh.png" 
                 alt="VitaWatch AI Smartwatch" 
-                className="w-full h-full object-contain drop-shadow-2xl scale-[1.1] md:scale-[1.2]"
+                className="w-full h-full object-contain drop-shadow-2xl scale-100"
               />
             </div>
           </motion.div>

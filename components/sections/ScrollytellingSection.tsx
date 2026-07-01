@@ -77,7 +77,7 @@ export function ScrollytellingSection() {
               className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] mt-[-10vh] lg:mt-0"
             >
               <img 
-                src="/images/hero-watch-transparent.svg" 
+                src="/images/anhchinh.png" 
                 alt="VitaWatch Features"
                 className="w-full h-full object-contain drop-shadow-2xl"
               />

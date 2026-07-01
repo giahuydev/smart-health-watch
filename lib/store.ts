@@ -33,10 +33,20 @@ export const useAppStore = create<AppState>()(
       // Cart state
       cart: [],
       isCartOpen: false,
-      addToCart: (item) => set((state) => ({ 
-        cart: [...state.cart, item],
-        isCartOpen: true 
-      })),
+      addToCart: (item) => set((state) => {
+        import("@/hooks/useTracker").then(({ trackEvent }) => trackEvent("add_to_cart", { product_id: item.id, name: item.name, price: item.price }));
+        import("react-hot-toast").then(({ toast }) => toast.success(`Đã thêm ${item.name} vào giỏ hàng!`, {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        }));
+        return { 
+          cart: [...state.cart, item],
+          isCartOpen: true 
+        };
+      }),
       removeFromCart: (id) => set((state) => ({ 
         cart: state.cart.filter(item => item.id !== id) 
       })),
