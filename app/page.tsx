@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { FeatureSection } from "@/components/sections/FeatureSection";
 import { SpecsSection } from "@/components/sections/SpecsSection";
+import { NewsletterSection } from "@/components/sections/NewsletterSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <HeroSection />
         <FeatureSection />
         <SpecsSection />
+        <NewsletterSection />
       </main>
       <Footer />
     </>
