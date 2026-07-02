@@ -139,14 +139,16 @@ export function Header() {
                 {link.name}
               </Link>
             ))}
+          </nav>
+          <div className="flex flex-col gap-1 pt-4 border-t border-slate-100 dark:border-gray-800">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 useAppStore.getState().openSidebar("wishlist");
               }}
-              className="w-full flex items-center justify-between text-xl font-heading font-semibold text-slate-900 dark:text-white p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800"
+              className="w-full flex items-center justify-between text-base font-medium p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800 text-slate-700 dark:text-gray-200"
             >
-              <span className="flex items-center gap-3"><Heart size={24} /> Yêu thích</span>
+              <span className="flex items-center gap-3"><Heart size={20} /> Yêu thích</span>
               <WishlistBadge />
             </button>
             <button
@@ -154,21 +156,20 @@ export function Header() {
                 setMobileMenuOpen(false);
                 useAppStore.getState().openSidebar("cart");
               }}
-              className="w-full flex items-center justify-between text-xl font-heading font-semibold text-slate-900 dark:text-white p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800"
+              className="w-full flex items-center justify-between text-base font-medium p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800 text-slate-700 dark:text-gray-200"
             >
-              <span className="flex items-center gap-3"><ShoppingCart size={24} /> Giỏ hàng</span>
+              <span className="flex items-center gap-3"><ShoppingCart size={20} /> Giỏ hàng</span>
               <CartBadge />
             </button>
-          </nav>
-          <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-gray-800">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-3 flex items-center gap-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800 text-slate-700 dark:text-gray-200 w-full"
+              className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800 text-slate-700 dark:text-gray-200"
             >
               {mounted && (theme === "dark" ? <Sun size={20} /> : <Moon size={20} />)}
               <span className="font-medium">Đổi giao diện</span>
             </button>
           </div>
+
           <Button variant="primary" className="w-full justify-center mt-2">
             Đặt trước ngay
           </Button>
