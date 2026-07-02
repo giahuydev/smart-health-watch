@@ -42,8 +42,16 @@ export function OrderSection() {
     setSelectedColor(edition.colors[0]);
   };
 
-  const currentProductId = `${selectedEdition.id}-${selectedColor.id}`;
-  const isWishlisted = wishlist.includes(currentProductId);
+  const currentProduct = selectedEdition.colors.find(c => c.id === selectedColor.id) || selectedEdition.colors[0];
+  const productVariant = {
+    id: `${selectedEdition.id}-${selectedColor.id}`,
+    name: selectedEdition.name,
+    edition: selectedEdition.edition as "Sport" | "Pro",
+    color: selectedColor.name,
+    price: selectedEdition.price,
+    image: selectedColor.image
+  };
+  const isWishlisted = wishlist.some(w => w.id === productVariant.id);
 
   const handleAddToCart = () => {
     const item: ProductVariant = {
@@ -92,9 +100,8 @@ export function OrderSection() {
             <div className="absolute top-6 right-6">
               <button
                 aria-label="Thêm vào yêu thích"
-                onClick={() => toggleWishlist(currentProductId)}
-                className={`p-3 rounded-full bg-white dark:bg-black shadow-sm transition-colors ${isWishlisted ? "text-red-500" : "text-slate-400 hover:text-slate-600 dark:hover:text-gray-300"
-                  }`}
+                onClick={() => toggleWishlist(productVariant)}
+                className={`p-3 rounded-full bg-white dark:bg-black shadow-sm transition-colors ${isWishlisted ? "text-red-500" : "text-slate-400 hover:text-slate-600 dark:hover:text-gray-300"}`}
               >
                 <Heart size={24} weight={isWishlisted ? "fill" : "regular"} />
               </button>

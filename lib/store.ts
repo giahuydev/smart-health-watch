@@ -19,8 +19,8 @@ interface AppState {
   toggleCart: () => void;
   
   // Wishlist
-  wishlist: string[]; // Array of product IDs
-  toggleWishlist: (id: string) => void;
+  wishlist: ProductVariant[]; // Array of products
+  toggleWishlist: (item: ProductVariant) => void;
   
   // Recently Viewed
   recentlyViewed: ProductVariant[];
@@ -54,11 +54,17 @@ export const useAppStore = create<AppState>()(
       
       // Wishlist state
       wishlist: [],
-      toggleWishlist: (id) => set((state) => ({
-        wishlist: state.wishlist.includes(id) 
-          ? state.wishlist.filter(wId => wId !== id)
-          : [...state.wishlist, id]
-      })),
+      toggleWishlist: (item) => set((state) => {
+        const exists = state.wishlist.some(w => w.id === item.id);
+        if (exists) {
+          import("react-hot-toast").then(({ toast }) => toast.success(`Đã bỏ lưu ${item.name}`, { style: { borderRadius: '10px', background: '#333', color: '#fff' } }));
+          return { wishlist: state.wishlist.filter(w => w.id !== item.id) };
+        } else {
+          import("@/hooks/useTracker").then(({ trackEvent }) => trackEvent("add_to_wishlist", { product_id: item.id }));
+          import("react-hot-toast").then(({ toast }) => toast.success(`Đã lưu ${item.name} vào mục yêu thích!`, { style: { borderRadius: '10px', background: '#333', color: '#fff' } }));
+          return { wishlist: [...state.wishlist, item] };
+        }
+      }),
       
       // Recently Viewed state
       recentlyViewed: [],
