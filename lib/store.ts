@@ -14,6 +14,9 @@ interface AppState {
   // Cart
   cart: ProductVariant[];
   isCartOpen: boolean;
+  activeSidebarTab: "cart" | "wishlist";
+  openSidebar: (tab: "cart" | "wishlist") => void;
+  setSidebarTab: (tab: "cart" | "wishlist") => void;
   addToCart: (item: ProductVariant) => void;
   removeFromCart: (id: string) => void;
   toggleCart: () => void;
@@ -33,6 +36,9 @@ export const useAppStore = create<AppState>()(
       // Cart state
       cart: [],
       isCartOpen: false,
+      activeSidebarTab: "cart",
+      openSidebar: (tab) => set({ isCartOpen: true, activeSidebarTab: tab }),
+      setSidebarTab: (tab) => set({ activeSidebarTab: tab }),
       addToCart: (item) => set((state) => {
         import("@/hooks/useTracker").then(({ trackEvent }) => trackEvent("add_to_cart", { product_id: item.id, name: item.name, price: item.price }));
         import("react-hot-toast").then(({ toast }) => toast.success(`Đã thêm ${item.name} vào giỏ hàng!`, {
@@ -44,7 +50,8 @@ export const useAppStore = create<AppState>()(
         }));
         return { 
           cart: [...state.cart, item],
-          isCartOpen: true 
+          isCartOpen: true,
+          activeSidebarTab: "cart"
         };
       }),
       removeFromCart: (id) => set((state) => ({ 

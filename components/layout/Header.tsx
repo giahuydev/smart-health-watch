@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { List, X, Moon, Sun, ShoppingCart } from "@phosphor-icons/react/dist/ssr";
+import { List, X, Moon, Sun, ShoppingCart, Heart } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/Button";
 import { useAppStore } from "@/lib/store";
 
@@ -13,6 +13,16 @@ function CartBadge() {
   return (
     <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
       {cart.length}
+    </span>
+  );
+}
+
+function WishlistBadge() {
+  const wishlist = useAppStore((state) => state.wishlist);
+  if (wishlist.length === 0) return null;
+  return (
+    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+      {wishlist.length}
     </span>
   );
 }
@@ -82,7 +92,16 @@ export function Header() {
           </button>
 
           <button
-            onClick={() => useAppStore.getState().toggleCart()}
+            onClick={() => useAppStore.getState().openSidebar("wishlist")}
+            className="p-2 rounded-full transition-colors relative hover:bg-slate-100 dark:hover:bg-gray-800 text-slate-600 dark:text-gray-300"
+            aria-label="View wishlist"
+          >
+            <Heart size={20} />
+            <WishlistBadge />
+          </button>
+
+          <button
+            onClick={() => useAppStore.getState().openSidebar("cart")}
             className="p-2 rounded-full transition-colors relative hover:bg-slate-100 dark:hover:bg-gray-800 text-slate-600 dark:text-gray-300"
             aria-label="View cart"
           >
@@ -119,6 +138,26 @@ export function Header() {
                 {link.name}
               </Link>
             ))}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                useAppStore.getState().openSidebar("wishlist");
+              }}
+              className="w-full flex items-center justify-between text-xl font-heading font-semibold text-slate-900 dark:text-white p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800"
+            >
+              <span className="flex items-center gap-3"><Heart size={24} /> Yêu thích</span>
+              <WishlistBadge />
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                useAppStore.getState().openSidebar("cart");
+              }}
+              className="w-full flex items-center justify-between text-xl font-heading font-semibold text-slate-900 dark:text-white p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-gray-800"
+            >
+              <span className="flex items-center gap-3"><ShoppingCart size={24} /> Giỏ hàng</span>
+              <CartBadge />
+            </button>
           </nav>
           <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-gray-800">
             <button
