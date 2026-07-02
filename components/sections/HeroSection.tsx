@@ -81,10 +81,13 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-emerald-500/30 dark:bg-teal-400/30 blur-[100px] rounded-full scale-[0.85] transform -z-10 transition-opacity duration-700" />
             
             <div className="relative w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[460px] lg:h-[460px]">
-              <img 
+              <Image 
                 src="/images/anhchinh.png" 
                 alt="VitaWatch AI Smartwatch" 
-                className="w-full h-full object-contain drop-shadow-2xl scale-100"
+                fill
+                priority
+                sizes="(max-width: 768px) 280px, (max-width: 1024px) 400px, 460px"
+                className="object-contain drop-shadow-2xl scale-100"
               />
             </div>
           </motion.div>

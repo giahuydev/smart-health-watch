@@ -91,6 +91,7 @@ export function OrderSection() {
           >
             <div className="absolute top-6 right-6">
               <button
+                aria-label="Thêm vào yêu thích"
                 onClick={() => toggleWishlist(currentProductId)}
                 className={`p-3 rounded-full bg-white dark:bg-black shadow-sm transition-colors ${isWishlisted ? "text-red-500" : "text-slate-400 hover:text-slate-600 dark:hover:text-gray-300"
                   }`}
@@ -99,10 +100,12 @@ export function OrderSection() {
               </button>
             </div>
             <div className="relative w-full h-full max-w-[260px] max-h-[260px] md:max-w-[340px] md:max-h-[340px]">
-              <img
+              <Image
                 src={selectedColor.image}
                 alt={`${selectedEdition.name} - ${selectedColor.name}`}
-                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 260px, 340px"
+                className="object-contain"
               />
             </div>
           </motion.div>
@@ -141,6 +144,8 @@ export function OrderSection() {
                 {selectedEdition.colors.map((color) => (
                   <button
                     key={color.id}
+                    aria-label={color.name}
+                    title={color.name}
                     onClick={() => setSelectedColor(color)}
                     className={`w-12 h-12 rounded-full border-2 transition-all duration-200 p-1 ${selectedColor.id === color.id
                       ? "border-amber-500 scale-110"

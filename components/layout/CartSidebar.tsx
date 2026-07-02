@@ -35,6 +35,7 @@ export function CartSidebar() {
                 <h2 className="text-xl font-heading font-bold">Giỏ hàng của bạn</h2>
               </div>
               <button
+                aria-label="Đóng giỏ hàng"
                 onClick={toggleCart}
                 className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-gray-800 transition-colors"
               >
@@ -55,8 +56,8 @@ export function CartSidebar() {
                 <div className="flex flex-col gap-6">
                   {cart.map((item, index) => (
                     <div key={`${item.id}-${index}`} className="flex gap-4 items-center bg-slate-50 dark:bg-gray-800/50 p-4 rounded-2xl">
-                      <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shrink-0 border border-slate-200 dark:border-gray-700 p-2">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                      <div className="relative w-20 h-20 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shrink-0 border border-slate-200 dark:border-gray-700 p-2 overflow-hidden">
+                        <Image src={item.image} alt={item.name} fill sizes="80px" className="object-contain p-2" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-heading font-semibold text-slate-900 dark:text-white truncate">
@@ -70,10 +71,11 @@ export function CartSidebar() {
                         </p>
                       </div>
                       <button 
+                        aria-label="Xóa sản phẩm"
                         onClick={() => removeFromCart(item.id)}
-                        className="p-2 text-red-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-full transition-colors"
+                        className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full transition-colors"
                       >
-                        <Trash size={20} />
+                        <Trash size={18} />
                       </button>
                     </div>
                   ))}

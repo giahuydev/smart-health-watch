@@ -97,6 +97,7 @@ export function Header() {
 
         {/* Mobile menu button */}
         <button
+          aria-label="Mở menu"
           className="md:hidden p-2 transition-colors text-slate-600 dark:text-gray-300"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >

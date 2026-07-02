@@ -91,6 +91,7 @@ export function ChatbotWidget() {
                 </div>
               </div>
               <button
+                aria-label="Đóng chat"
                 onClick={() => setIsOpen(false)}
                 className="p-1.5 hover:bg-emerald-600 rounded-full transition-colors"
               >
@@ -144,6 +145,7 @@ export function ChatbotWidget() {
                 />
                 <button
                   type="submit"
+                  aria-label="Gửi tin nhắn"
                   disabled={isLoading || !input.trim()}
                   className="p-3 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white disabled:opacity-50 disabled:hover:bg-emerald-500 transition-colors active:scale-95"
                 >

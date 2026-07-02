@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { SunHorizon, PersonSimpleRun, BellRinging, Moon } from "@phosphor-icons/react/dist/ssr";
 
 const milestones = [
@@ -76,10 +77,12 @@ export function ScrollytellingSection() {
               transition={{ duration: 0.8 }}
               className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] mt-[-10vh] lg:mt-0"
             >
-              <img 
+              <Image 
                 src="/images/anhchinh.png" 
                 alt="VitaWatch Features"
-                className="w-full h-full object-contain drop-shadow-2xl"
+                fill
+                sizes="(max-width: 1024px) 260px, 400px"
+                className="object-contain drop-shadow-xl"
               />
             </motion.div>
           </div>
