@@ -19,10 +19,11 @@ function CartBadge() {
 
 function WishlistBadge() {
   const wishlist = useAppStore((state) => state.wishlist);
-  if (wishlist.length === 0) return null;
+  const validWishlist = wishlist.filter(item => item && typeof item === 'object' && item.name);
+  if (validWishlist.length === 0) return null;
   return (
     <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-      {wishlist.length}
+      {validWishlist.length}
     </span>
   );
 }

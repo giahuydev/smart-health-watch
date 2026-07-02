@@ -97,7 +97,7 @@ export function CartSidebar() {
                   </div>
                 )
               ) : (
-                wishlist.length === 0 ? (
+                wishlist.filter(item => item && typeof item === 'object' && item.name).length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center gap-4 text-slate-500 dark:text-gray-400">
                     <Heart size={48} weight="thin" />
                     <p>Chưa có sản phẩm yêu thích.<br/>Hãy thả tim sản phẩm bạn thích nhé!</p>
@@ -107,7 +107,7 @@ export function CartSidebar() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-6">
-                    {wishlist.map((item, index) => (
+                    {wishlist.filter(item => item && typeof item === 'object' && item.name).map((item, index) => (
                       <div key={`wishlist-${item.id}-${index}`} className="flex gap-4 items-center bg-slate-50 dark:bg-gray-800/50 p-4 rounded-2xl">
                         <div className="relative w-20 h-20 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shrink-0 border border-slate-200 dark:border-gray-700 p-2 overflow-hidden">
                           <Image src={item.image} alt={item.name} fill sizes="80px" className="object-contain p-2" />
