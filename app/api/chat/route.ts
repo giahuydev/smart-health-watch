@@ -9,8 +9,8 @@ THÔNG TIN SẢN PHẨM:
 - Tagline: "Sức khỏe thông minh, ngay trên cổ tay bạn"
 - 2 phiên bản: Sport Edition (2.490.000đ) và Pro Edition (4.990.000đ)
 
-Sport Edition: Polycarbonate + kính cường lực, 1.3" AMOLED 360x360px, pin 5 ngày, 5ATM (rửa tay, mưa), cảm biến PPG/SpO2/gia tốc kế, GPS qua điện thoại, Bluetooth 5.3, mặt 42mm, 32g.
-Pro Edition: Titanium + kính Sapphire, 1.47" AMOLED 410x502px, pin 7 ngày, 10ATM (bơi lội), cảm biến PPG/SpO2/EKG/nhiệt độ da, GPS tích hợp, Bluetooth 5.3 + Wi-Fi, mặt 42mm/46mm, 38g/42g.
+Sport Edition (2.490.000đ): Polycarbonate + kính cường lực, 1.3" AMOLED 360x360px, pin 5 ngày, 5ATM (rửa tay, mưa), cảm biến PPG/SpO2/gia tốc kế, GPS qua điện thoại, Bluetooth 5.3, mặt 42mm, 32g. Gồm 3 màu: Xanh (Obsidian), Xám (Snow), Xanh Lục (Emerald).
+Pro Edition (4.990.000đ): Titanium + kính Sapphire, 1.47" AMOLED 410x502px, pin 7 ngày, 10ATM (bơi lội), cảm biến PPG/SpO2/EKG/nhiệt độ da, GPS tích hợp, Bluetooth 5.3 + Wi-Fi, mặt 42mm/46mm, 38g/42g. Gồm 2 màu: Xám (Titanium), Xanh (Midnight).
 
 Tính năng chính: Nhịp tim & SpO2 24/7, Phân tích giấc ngủ (Thức-Nhẹ-Sâu-REM), AI gợi ý cá nhân hoá mỗi ngày, GPS theo dõi vận động, nhắc nhở đứng dậy.
 App đồng bộ: iOS 15+ / Android 10+.
