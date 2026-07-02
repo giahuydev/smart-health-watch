@@ -54,15 +54,7 @@ export function OrderSection() {
   const isWishlisted = wishlist.some(w => w.id === productVariant.id);
 
   const handleAddToCart = () => {
-    const item: ProductVariant = {
-      id: currentProductId,
-      name: selectedEdition.name,
-      edition: selectedEdition.edition as "Sport" | "Pro",
-      color: selectedColor.name,
-      price: selectedEdition.price,
-      image: selectedColor.image,
-    };
-    addToCart(item);
+    addToCart(productVariant);
   };
 
   return (
